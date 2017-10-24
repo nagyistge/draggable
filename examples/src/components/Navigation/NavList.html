@@ -1,0 +1,26 @@
+{% macro render(SubNav, ViewAttrs) %}
+  {% for Section, Links in SubNav %}
+    {% set listClasses = ['NavList'] %}
+    {% set listClasses = (
+      listClasses.push('NavList--isCurrent') if ViewAttrs.parent == Section, listClasses
+    ) %}
+
+    <ul class="{{ listClasses | join(' ') | trim }}">
+      <li class="NavItem">
+        <span class="NavHeading">{{ Section }}</span>
+      </li>
+
+      {% for Link in Links %}
+        {% set linkHref = Link | lower | replace(' ', '-') %}
+        {% set linkClasses = ['NavLink'] %}
+        {% set linkClasses = (
+          linkClasses.push('NavLink--isCurrent') if ViewAttrs.child == Link, linkClasses
+        ) %}
+
+        <li class="NavItem">
+          <a href="{{ linkHref + '.html' }}" class="{{ linkClasses | join(' ') | trim }}" title="See example: {{ Link }}">{{ Link }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+{% endmacro %}

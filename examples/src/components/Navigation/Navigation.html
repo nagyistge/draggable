@@ -1,0 +1,9 @@
+{% import './NavList.html' as NavList %}
+
+{% macro render(ViewAttrs, NavItems) %}
+  <nav class="Navigation">
+    {% for SubNav in NavItems %}
+      {{ NavList.render(SubNav, ViewAttrs) }}
+    {% endfor %}
+  </nav>
+{% endmacro %}

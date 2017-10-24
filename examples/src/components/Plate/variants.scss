@@ -1,0 +1,116 @@
+////
+/// Components
+/// Plate variants
+////
+
+///
+/// Level variant
+.Plate--levelBottom {
+  padding-top: 100%;
+  width: 100%;
+
+  .PlateShadow {
+    transform: rotate(55deg);
+  }
+}
+
+.Plate--levelMiddle {
+  padding-top: 75%;
+  width: 75%;
+
+  .PlateShadow {
+    transform: rotate(45deg);
+  }
+}
+
+.Plate--levelTop {
+  padding-top: 50%;
+  width: 50%;
+
+  .PlateShadow {
+    transform: rotate(35deg);
+  }
+}
+
+///
+/// Draggable variant
+.Plate--isDraggable {
+  --shadow-offset: 0;
+
+  color: get-color(coal, dark);
+  transition: color get-duration(fast) get-easing();
+
+  &:focus,
+  &:hover {
+    color: get-color(brand, blue);
+  }
+
+  .PlateShadowWrapper {
+    transform: translateY(--shadow-offset);
+  }
+
+  .PlateShadow::before {
+    background-color: currentColor;
+    animation-duration: get-duration(slow);
+    animation-timing-function: get-easing();
+  }
+
+  .PlateContent {
+    background-color: white;
+    border: get-border(flexible) solid currentColor;
+    animation-duration: get-duration(slow);
+    animation-timing-function: get-easing();
+
+    @media screen and (min-width: get-breakpoint()) {
+      border-width: get-border(thick);
+    }
+  }
+
+  &.Plate--levelBottom {
+    &:focus,
+    &:hover {
+      .PlateContent,
+      .PlateShadow::before {
+        animation-name: jelly-small;
+      }
+    }
+  }
+
+  &.Plate--levelMiddle {
+    &:focus,
+    &:hover {
+      .PlateContent,
+      .PlateShadow::before {
+        animation-name: jelly-medium;
+      }
+    }
+  }
+
+  &.Plate--levelTop {
+    &:focus,
+    &:hover {
+      .PlateContent,
+      .PlateShadow::before {
+        animation-name: jelly-big;
+      }
+    }
+  }
+}
+
+///
+/// Test
+/*
+.PlateWrapper--test {
+  .Plate--levelTop {
+    transform: translate3d(0, -40%, 0) scale(1, 0.75);
+  }
+
+  .Plate--levelMiddle {
+    transform: translate3d(0, -15%, 0) scale(1, 0.75);
+  }
+
+  .Plate--levelBottom {
+    transform: translate3d(0, 0%, 0) scale(1, 0.75);
+  }
+}
+*/

@@ -1,0 +1,29 @@
+{% extends 'views/templates/document.html' %}
+
+{% import 'components/Document/Head.html' as Head %}
+{% import 'components/Sidebar/Sidebar.html' as Sidebar %}
+{% import 'components/PageHeader/PageHeader.html' as PageHeader %}
+
+{% import 'content/Draggable/Positioned/Positioned.html' as Positioned %}
+
+{% set ViewAttrs = {
+  id: 'Positioned',
+  parent: 'Draggable',
+  child: 'Positioned',
+  subheading: 'Drag and drop are not mutually exclusive. Draggable events help you build any kind of custom interaction.'
+} %}
+
+{% block PageId %}{{ ViewAttrs.id }}{% endblock %}
+
+{% block head %}
+  {{ Head.render(ViewAttrs) }}
+{% endblock %}
+
+{% block sidebar %}
+  {{ Sidebar.render(ViewAttrs, NavItems) }}
+{% endblock %}
+
+{% block main %}
+  {{ PageHeader.render(ViewAttrs.parent, ViewAttrs.subheading) }}
+  {{ Positioned.render(ViewAttrs.id) }}
+{% endblock %}

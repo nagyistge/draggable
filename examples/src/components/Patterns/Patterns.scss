@@ -1,0 +1,34 @@
+////
+/// Components
+/// Patterns
+////
+
+@import 'props';
+
+:root {
+  --halftone-bg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path fill="#{get-color(brand, blue)}" d="M0 4v4c1.104 0 2-.895 2-2s-.896-2-2-2zm6-2c1.104 0 2-.895 2-2H4c0 1.105.896 2 2 2zm0 8c-1.104 0-2 .895-2 2h4c0-1.105-.896-2-2-2zm4-4c0 1.105.896 2 2 2V4c-1.104 0-2 .895-2 2z"/></svg>');
+
+  --stripes-tight-bg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 4"><path fill="#{get-color(ash, dark)}" d="M0 0v.707L.707 0M4 4v-.707L3.293 4M4 0h-.707L0 3.293V4h.707L4 .707"/></svg>');
+
+  --stripes-loose-bg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path fill="#{get-color(coal, dark)}" d="M0 0v.884L.884 0M8 8v-.884L7.116 8m0-8L0 7.116V8h.884L8 .884V0"/></svg>');
+}
+
+@keyframes halftone {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: ($halftone-bg-size / 2) ($halftone-bg-size / 2);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

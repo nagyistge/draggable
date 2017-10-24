@@ -1,0 +1,39 @@
+////
+/// Components
+/// Link
+////
+
+@mixin Link {
+  color: get-color(purple, light);
+  transition: color get-duration() get-easing();
+
+  &:focus,
+  &:hover {
+    color: get-color(purple);
+  }
+
+  &:active {
+    color: get-color(purple, dark);
+  }
+}
+
+.Link {
+  @include Link;
+}
+
+.Link--typeDark {
+  color: get-color(purple);
+
+  &:focus,
+  &:hover {
+    color: get-color(brand, yellow);
+  }
+
+  &:active {
+    color: get-color(brand, orange);
+  }
+}
+
+.Link--noWrap {
+  white-space: nowrap;
+}

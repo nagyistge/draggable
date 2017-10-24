@@ -1,0 +1,58 @@
+////
+/// Components
+/// Pattern props
+////
+
+@import '../../styles/utilities/layout';
+
+@mixin pattern-bg-reset {
+  background-image: none;
+  background-color: transparent;
+  background-size: auto auto;
+}
+
+///
+/// Halftone
+
+$halftone-bg-size: 1.2rem;
+
+@mixin halftone-bg($psuedo: before) {
+  &::#{unquote($psuedo)} {
+    @include position-cover;
+    content: '';
+    display: block;
+    pointer-events: none;
+
+    @content;
+  }
+}
+
+@mixin halftone-bg-animated($psuedo: before) {
+  &::#{unquote($psuedo)} {
+    background-image: var(--halftone-bg);
+    background-size: $halftone-bg-size $halftone-bg-size;
+    animation:
+      halftone get-duration(slow) steps(3) infinite both,
+      fade-in get-duration() get-easing() both;
+
+    @content;
+  }
+}
+
+///
+/// Stripes
+
+$stripes-tight-bg-size: 0.4rem;
+$stripes-loose-bg-size: 0.8rem;
+
+@mixin stripes-tight-bg {
+  background-image: var(--stripes-tight-bg);
+  background-color: white;
+  background-size: $stripes-tight-bg-size $stripes-tight-bg-size;
+}
+
+@mixin stripes-loose-bg {
+  background-image: var(--stripes-loose-bg);
+  background-color: white;
+  background-size: $stripes-loose-bg-size $stripes-loose-bg-size;
+}

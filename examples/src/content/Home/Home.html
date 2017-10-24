@@ -1,0 +1,9 @@
+{% import '../../components/Block/Block.html' as Block %}
+
+{% macro render(id) %}
+  <section id="{{ id }}" class="{{ id }}">
+    <article class="BlockLayout BlockLayout--typeFlex">
+      <p>Hello and welcome</p>
+    </article>
+  </section>
+{% endmacro %}
