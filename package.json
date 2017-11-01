@@ -29,6 +29,7 @@
   "main": "./lib/draggable.bundle.js",
   "scripts": {
     "build": "webpack",
+    "postinstall": "npm run build",
     "prepublish": "npm run build",
     "lint": "eslint ./src --max-warnings 0",
     "test": "jest --config config.json",
@@ -37,7 +38,7 @@
   "files": [
     "lib/**/*.js"
   ],
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-shopify": "^16.0.2",
     "babel-jest": "^21.2.0",
