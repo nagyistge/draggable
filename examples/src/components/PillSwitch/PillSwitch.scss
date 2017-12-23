@@ -13,7 +13,6 @@
   margin-left: auto;
   width: pill-switch(size);
   height: pill-switch(size);
-  // background: rgba(black, 0.1);
 
   @media screen and (min-width: get-breakpoint(tablet)) {
     width: pill-switch(size, tablet);
