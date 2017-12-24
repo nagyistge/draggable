@@ -1,6 +1,5 @@
 import {Draggable} from '../../../scripts/vendor/draggable';
-
-// const maxDragDistance = 80;
+import Plate from '../../../components/Plate';
 
 export default function Positioned() {
   const containerSelector = '#Positioned .PlateWrapper';
@@ -14,18 +13,24 @@ export default function Positioned() {
     draggable: '.Plate',
     appendTo: containerSelector,
   });
+  const plates = new Plate(containers[0]);
 
   // --- Drag states --- //
   draggable.on('drag:start', evt => {
-    console.log('Drag: Start', evt);
+    plates.setInitialPosition(evt.sensorEvent);
+  });
+
+  draggable.on('mirror:created', evt => {
+    // console.log('Mirror: Created', evt);
   });
 
   draggable.on('drag:move', evt => {
-    console.log('Drag: Move', evt);
+    // console.log('Drag: Move', evt);
+    plates.dragWarp(evt.source, evt.sensorEvent);
   });
 
   draggable.on('drag:stop', evt => {
-    console.log('Drag: Stop', evt);
+    // console.log('Drag: Stop', evt);
   });
 
   return draggable;

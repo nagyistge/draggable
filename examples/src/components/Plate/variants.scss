@@ -35,7 +35,8 @@
 ///
 /// Draggable variant
 .Plate--isDraggable {
-  --shadow-offset: 0;
+  --shadow-offset-x: 0;
+  --shadow-offset-y: 0;
 
   color: get-color(coal, dark);
   transition: color get-duration(fast) get-easing();
@@ -46,7 +47,9 @@
   }
 
   .PlateShadowWrapper {
-    transform: translateY(var(--shadow-offset));
+    transform: translate3d(
+      var(--shadow-offset-x), var(--shadow-offset-y), 0
+    );
   }
 
   .PlateShadow::before {
@@ -94,6 +97,10 @@
         animation-name: jelly-big;
       }
     }
+  }
+
+  &.draggable-mirror {
+    display: none;
   }
 }
 
