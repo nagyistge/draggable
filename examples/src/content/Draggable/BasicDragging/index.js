@@ -17,6 +17,11 @@ function calcOffset(offset) {
 export default function BasicDragging() {
   const toggleClass = 'PillSwitch--isOn';
   const containers = document.querySelectorAll('#BasicDragging .PillSwitch');
+
+  if (containers.length === 0) {
+    return false;
+  }
+
   const draggable = new Draggable(containers, {
     draggable: '.PillSwitchControl',
   });

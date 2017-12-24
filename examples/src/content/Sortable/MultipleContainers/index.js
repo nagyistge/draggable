@@ -1,8 +1,12 @@
 import {Sortable} from '../../../scripts/vendor/draggable';
 
 export default function MultipleContainers() {
-  const containerSelector = '#MultipleContainers .Container';
-  const containers = document.querySelectorAll(containerSelector);
+  const containers = document.querySelectorAll('#MultipleContainers .Container');
+
+  if (containers.length === 0) {
+    return false;
+  }
+
   const sortable = new Sortable(containers, {
     draggable: '.StackedListItem--isDraggable',
     mirror: {

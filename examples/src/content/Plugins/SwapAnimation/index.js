@@ -2,6 +2,11 @@ import {Swappable} from '../../../scripts/vendor/draggable';
 
 export default function SwapAnimation() {
   const containers = document.querySelectorAll('#SwapAnimation .BlockLayout');
+
+  if (containers.length === 0) {
+    return false;
+  }
+
   const swappable = new Swappable(containers, {
     draggable: '.Block--isDraggable',
     mirror: {

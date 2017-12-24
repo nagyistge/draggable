@@ -3,6 +3,11 @@ import {Sortable} from '../../../scripts/vendor/draggable';
 export default function SimpleList() {
   const containerSelector = '#SimpleList .StackedList';
   const containers = document.querySelectorAll(containerSelector);
+
+  if (containers.length === 0) {
+    return false;
+  }
+
   const sortable = new Sortable(containers, {
     draggable: '.StackedListItem--isDraggable',
     appendTo: containerSelector,

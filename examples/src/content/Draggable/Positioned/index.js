@@ -2,6 +2,11 @@ import {Draggable} from '../../../scripts/vendor/draggable';
 
 export default function Positioned() {
   const containers = document.querySelectorAll('#Positioned .Plate');
+
+  if (containers.length === 0) {
+    return false;
+  }
+
   const draggable = new Draggable(containers, {
     draggable: '.Plate',
   });

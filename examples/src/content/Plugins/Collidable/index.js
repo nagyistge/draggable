@@ -2,6 +2,11 @@ import {Droppable, Plugins} from '../../../scripts/vendor/draggable';
 
 export default function Collidable() {
   const containers = document.querySelectorAll('#Collidable .BlockLayout');
+
+  if (containers.length === 0) {
+    return false;
+  }
+
   const droppable = new Droppable(containers, {
     draggable: '.Block--isDraggable',
     droppable: '.BlockWrapper--isDroppable',

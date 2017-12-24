@@ -2,6 +2,11 @@ import {Droppable} from '../../../scripts/vendor/draggable';
 
 export default function OneAndOnly() {
   const containers = document.querySelectorAll('#OneAndOnly .BlockLayout');
+
+  if (containers.length === 0) {
+    return false;
+  }
+
   const droppable = new Droppable(containers, {
     draggable: '.Block--isDraggable',
     droppable: '.BlockWrapper--isDroppable',

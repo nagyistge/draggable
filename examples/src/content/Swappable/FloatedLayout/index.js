@@ -2,6 +2,11 @@ import {Swappable} from '../../../scripts/vendor/draggable';
 
 export default function FloatedLayout() {
   const containers = document.querySelectorAll('#FloatedLayout .BlockLayout');
+
+  if (containers.length === 0) {
+    return false;
+  }
+
   const swappable = new Swappable(containers, {
     draggable: '.Block--isDraggable',
     // placedTimeout: 3000,

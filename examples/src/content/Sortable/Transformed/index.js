@@ -3,6 +3,11 @@ import {Sortable} from '../../../scripts/vendor/draggable';
 export default function Transformed() {
   const containerSelector = '#Transformed .PaperStack';
   const containers = document.querySelectorAll(containerSelector);
+
+  if (containers.length === 0) {
+    return false;
+  }
+
   const sortable = new Sortable(containers, {
     draggable: '.PaperStackItem--isDraggable',
     appendTo: containerSelector,
