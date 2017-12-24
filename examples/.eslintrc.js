@@ -6,6 +6,7 @@ module.exports = {
   globals: {},
   rules: {
     'line-comment-position': 0,
+    'no-console': 0,
   },
   env: {
     browser: true,

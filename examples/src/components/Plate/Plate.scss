@@ -23,6 +23,8 @@
   @include position-cover;
   height: 0;
   color: white;
+  // required for more accurate :hover hitbox
+  border-radius: 50%;
 }
 
 .PlateShadowWrapper {

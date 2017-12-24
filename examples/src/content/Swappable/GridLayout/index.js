@@ -18,11 +18,11 @@ export default function GridLayout() {
 
   // --- Drag states --- //
   swappable.on('drag:start', evt => {
-    console.log('Drag: Start', evt); // eslint-disable-line no-console
+    console.log('Drag: Start', evt);
   });
 
   swappable.on('drag:stop', evt => {
-    console.log('Drag: Stop', evt); // eslint-disable-line no-console
+    console.log('Drag: Stop', evt);
   });
 
   return swappable;

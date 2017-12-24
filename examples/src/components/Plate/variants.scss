@@ -46,7 +46,7 @@
   }
 
   .PlateShadowWrapper {
-    transform: translateY(--shadow-offset);
+    transform: translateY(var(--shadow-offset));
   }
 
   .PlateShadow::before {
