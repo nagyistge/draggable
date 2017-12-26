@@ -29,8 +29,8 @@ export default function Positioned() {
     plates.dragWarp(evt.source, evt.sensorEvent);
   });
 
-  draggable.on('drag:stop', evt => {
-    // console.log('Drag: Stop', evt);
+  draggable.on('drag:stop', () => {
+    plates.resetWarp();
   });
 
   return draggable;
