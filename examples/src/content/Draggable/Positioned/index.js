@@ -17,10 +17,10 @@ export default function Positioned() {
 
   // --- Drag states --- //
   draggable.on('drag:start', evt => {
-    plates.setInitialPosition(evt.sensorEvent);
+    plates.setInitialMousePosition(evt.sensorEvent);
   });
 
-  draggable.on('mirror:created', evt => {
+  draggable.on('mirror:created', () => {
     // console.log('Mirror: Created', evt);
   });
 

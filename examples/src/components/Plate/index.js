@@ -1,4 +1,11 @@
+import flipSign from '../../scripts/helpers/flip-sign';
+
 const scaleFactor = 0.75;
+const translateFactors = {
+  bottom: 0.1,
+  middle: 0.5,
+  top: 0.9,
+};
 const dragThreshold = {
   min: -40,
   max: 40,
@@ -8,16 +15,6 @@ const Classes = {
   middle: 'Plate--levelMiddle',
   top: 'Plate--levelTop',
 };
-
-function flipSign(number) {
-  if (Math.sign(number) === 1) {
-    return -Math.abs(number);
-  } else if (Math.sign(number) === -1) {
-    return Math.abs(number);
-  } else {
-    return 0;
-  }
-}
 
 export default class Plate {
   constructor(wrapper) {
@@ -31,10 +28,9 @@ export default class Plate {
       x: 0,
       y: 0,
     };
-    this.factors = this._getFactors();
   }
 
-  setInitialPosition(sensorEvent) {
+  setInitialMousePosition(sensorEvent) {
     this.initialMousePosition.x = sensorEvent.clientX;
     this.initialMousePosition.y = sensorEvent.clientY;
   }
@@ -52,20 +48,6 @@ export default class Plate {
     this._scalePlates(0, 0);
     this._translateShadow(0, 0);
     this._translateEachPlate(0, 0);
-  }
-
-  _getFactors() {
-    const factors = {};
-
-    for (const plateLevel in this.plates) {
-      if (!this.plates.hasOwnProperty(plateLevel)) {
-        return false;
-      }
-
-      factors[plateLevel] = getComputedStyle(this.wrapper).getPropertyValue(`--${plateLevel}-translate-factor`);
-    }
-
-    return factors;
   }
 
   _offsetWithinThreshold(initialPosition, currentPosition) {
@@ -102,8 +84,8 @@ export default class Plate {
         return;
       }
 
-      const translateX = x * 2 * this.factors[plateLevel];
-      const translateY = y * 2 * this.factors[plateLevel];
+      const translateX = flipSign(x * 2) * translateFactors[plateLevel];
+      const translateY = flipSign(y * 2) * translateFactors[plateLevel];
 
       this.wrapper.style.setProperty(`--${plateLevel}-translate-x`, `${translateX}px`);
       this.wrapper.style.setProperty(`--${plateLevel}-translate-y`, `${translateY}px`);
@@ -111,10 +93,7 @@ export default class Plate {
   }
 
   _translateShadow(x, y) {
-    const shadowX = flipSign(x / 2);
-    const shadowY = flipSign(y / 2);
-
-    this.wrapper.style.setProperty(`--shadow-offset-x`, `${shadowX}px`);
-    this.wrapper.style.setProperty(`--shadow-offset-y`, `${shadowY}px`);
+    this.wrapper.style.setProperty(`--shadow-offset-x`, `${x / 2}px`);
+    this.wrapper.style.setProperty(`--shadow-offset-y`, `${y / 2}px`);
   }
 }
