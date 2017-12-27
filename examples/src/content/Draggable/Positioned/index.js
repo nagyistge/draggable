@@ -3,29 +3,25 @@ import Plate from '../../../components/Plate';
 
 export default function Positioned() {
   const containerSelector = '#Positioned .PlateWrapper';
-  const containers = document.querySelectorAll(containerSelector);
+  const container = document.querySelector(containerSelector);
 
-  if (containers.length === 0) {
+  if (!container) {
     return false;
   }
 
-  const draggable = new Draggable(containers, {
+  const draggable = new Draggable(container, {
     draggable: '.Plate',
-    appendTo: containerSelector,
   });
-  const plates = new Plate(containers[0]);
+  const plates = new Plate(container);
 
   // --- Drag states --- //
   draggable.on('drag:start', evt => {
+    plates.setThreshold();
     plates.setInitialMousePosition(evt.sensorEvent);
-  });
-
-  draggable.on('mirror:created', () => {
-    // console.log('Mirror: Created', evt);
+    console.log(plates.threshold);
   });
 
   draggable.on('drag:move', evt => {
-    // console.log('Drag: Move', evt);
     plates.dragWarp(evt.source, evt.sensorEvent);
   });
 

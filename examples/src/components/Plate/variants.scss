@@ -49,6 +49,7 @@
 
 .Plate--isDraggable {
   color: get-color(coal, dark);
+  // helps smooth out on some devices: + transform get-duration(faster) linear
   transition: color get-duration(fast) get-easing();
 
   &:focus,
@@ -136,7 +137,31 @@
     }
   }
 
+  // would be nice if there was a better way to suppress the creation of the mirror
   &.draggable-mirror {
     display: none;
+  }
+}
+
+.draggable-container--placed {
+  .Plate--levelBottom {
+    .PlateContent,
+    .PlateShadow::before {
+      animation-name: jelly-small;
+    }
+  }
+
+  .Plate--levelMiddle {
+    .PlateContent,
+    .PlateShadow::before {
+      animation-name: jelly-medium;
+    }
+  }
+
+  .Plate--levelTop {
+    .PlateContent,
+    .PlateShadow::before {
+      animation-name: jelly-big;
+    }
   }
 }
